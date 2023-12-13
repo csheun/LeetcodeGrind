@@ -2,27 +2,14 @@ class Solution {
 public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
         vector<vector<string>> result;
-        vector<unordered_map<char, int>> mps;
+        unordered_map<string, vector<string>> mp;
         for (string str : strs) {
-            unordered_map<char, int> mp;
-            for (char c : str) {
-                mp[c]++;
-            }
-            // check with all other mps
-            int match = -1;
-            for (int i = 0; i < mps.size(); i++) {
-                if (mps[i] == mp) {
-                    match = i;
-                    break;
-                }
-            }
-            if (match != -1) {
-                result[match].push_back(str);
-            } else {
-                // include hashmap and new str
-                mps.push_back(mp);
-                result.push_back({str});
-            }
+            string sorted_str = str;
+            sort(sorted_str.begin(), sorted_str.end());
+            mp[sorted_str].push_back(str);
+        }
+        for (auto pair : mp) {
+            result.push_back(pair.second);
         }
         return result;
     }
