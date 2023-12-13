@@ -6,7 +6,11 @@ public:
         }
         std::unordered_map<char, int> mp;
         for (char c : s) {
-            mp[c]++;
+            if (mp.find(c) != mp.end()) {
+                mp[c] += 1;
+            } else {
+                mp[c] = 1;
+            }
         }
         for (char c: t) {
             if (mp.find(c) == mp.end() || mp[c] == 0) {
