@@ -1,54 +1,43 @@
 class Solution {
 public:
     int numIslands(vector<vector<char>>& grid) {
+        int islands = 0;
         int rows = grid.size();
         int cols = grid[0].size();
-        int count = 0;
-        vector<vector<bool>> visited(rows, vector<bool>(cols, false));
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                if (visited[i][j] || grid[i][j] == '0') 
-                    continue;
-                count += 1;
-                bfs(grid, visited, i, j);
+        unordered_set<string> visited;
+
+        vector<pair<int, int>> directions = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                if (grid[r][c] == '1' && visited.find(to_string(r) + "," + to_string(c)) == visited.end()) {
+                    islands++;
+                    bfs(grid, r, c, visited, directions, rows, cols);
+                }
             }
         }
-        return count;
+
+        return islands;        
     }
-    void bfs(vector<vector<char>>& grid , vector<vector<bool>>& visited, int i, int j) {
-        int n_row = grid.size();
-        int n_col = grid[0].size();
+
+private:
+    void bfs(vector<vector<char>>& grid, int r, int c, unordered_set<string>& visited, vector<pair<int, int>>& directions, int rows, int cols) {
         queue<pair<int, int>> q;
-        q.push({i,j});
+        visited.insert(to_string(r) + "," + to_string(c));
+        q.push({r, c});
+
         while (!q.empty()) {
-            auto target = q.front();
-            int row = target.first;
-            int col = target.second;
-            if (row - 1 >= 0) {
-                if (!visited[row-1][col] && grid[row - 1][col] == '1') {
-                    visited[row - 1][col] = true;
-                    q.push({row - 1, col});
-                }
-            }
-            if (row + 1 < n_row) {
-                if (!visited[row + 1][col] && grid[row + 1][col] == '1') {
-                    visited[row + 1][col] = true;
-                    q.push({row + 1, col});
-                }
-            }
-            if (col - 1 >= 0) {
-                if (!visited[row][col - 1] && grid[row][col - 1] == '1') {
-                    visited[row][col - 1] = true;
-                    q.push({row, col - 1});
-                }
-            }
-            if (col + 1 < n_col) {
-                if (!visited[row][col + 1] && grid[row][col + 1] == '1') {
-                    visited[row][col + 1] = true;
-                    q.push({row, col + 1});
-                }
-            }
+            auto [row, col] = q.front();
             q.pop();
+
+            for (auto [dr, dc] : directions) {
+                int nr = row + dr;
+                int nc = col + dc;
+                if (nr >= 0 && nr < rows && nc >= 0 && nc < cols && grid[nr][nc] == '1' && visited.find(to_string(nr) + "," + to_string(nc)) == visited.end()) {
+                    q.push({nr, nc});
+                    visited.insert(to_string(nr) + "," + to_string(nc));
+                }
+            }
         }
     }
-};
+};    
