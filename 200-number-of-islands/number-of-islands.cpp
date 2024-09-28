@@ -16,8 +16,6 @@ public:
         return count;
     }
     void bfs(vector<vector<char>>& grid , vector<vector<bool>>& visited, int i, int j) {
-        // start at i, j
-        // search up down left right
         int n_row = grid.size();
         int n_col = grid[0].size();
         queue<pair<int, int>> q;
@@ -26,7 +24,6 @@ public:
             auto target = q.front();
             int row = target.first;
             int col = target.second;
-            cout << "row: " << row << " col: " << col << endl;
             if (row - 1 >= 0) {
                 if (!visited[row-1][col] && grid[row - 1][col] == '1') {
                     visited[row - 1][col] = true;
