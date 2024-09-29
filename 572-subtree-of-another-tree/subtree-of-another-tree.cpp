@@ -24,10 +24,7 @@ public:
         return false;
     }
     bool isSubtree(TreeNode* root, TreeNode* subRoot) {
-        if (root == nullptr && subRoot == nullptr) {
-            return true;
-        }
-        if (root == nullptr || subRoot == nullptr) {
+        if (root == nullptr) {
             return false;
         }
         if (isSameTree(root, subRoot)){
