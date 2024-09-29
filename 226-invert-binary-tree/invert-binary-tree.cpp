@@ -12,7 +12,6 @@
 class Solution {
 public:
     TreeNode* invertTree(TreeNode* root) {
-        // reach leaves
         if ((root == nullptr) ||(root->left == nullptr && root->right == nullptr)) {
             return root;
         }
