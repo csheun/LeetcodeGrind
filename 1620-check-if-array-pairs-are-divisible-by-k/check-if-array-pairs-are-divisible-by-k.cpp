@@ -12,7 +12,6 @@ public:
         }
         auto og_map = remainder_count_map;
         for (auto& x : og_map) {
-            cout << "key: " << x.first << " val: " << x.second << '\n';
             int key = x.first;
             if (remainder_count_map[key] == -1) {
                 continue;
