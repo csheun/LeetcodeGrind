@@ -8,10 +8,8 @@ public:
         int remaining = s1.size();
         int start_ptr{-1};
         for (int i = 0; i < s2.size(); i++) {
-            cout << "start_ptr: " << start_ptr << '\n';
             char curr_char = s2[i];
             if (s1_map.find(curr_char) == s1_map.end()) {
-                // cout << "can find\n";
                 // add back all the char;
                 remaining = s1.size();
                 if (start_ptr != -1) {
@@ -25,14 +23,7 @@ public:
                 // can find
 
                 if (s1_map[curr_char] != 0) {
-                    s1_map[curr_char] -= 1;
-                    remaining -= 1;
-                    cout << "remaining: " << remaining << '\n';
-                    if (remaining == 0) {
-                        return true;
-                    }
                     if (start_ptr == -1) {
-                        // move start_ptr here
                         start_ptr = i;
                     }
                 } 
@@ -46,11 +37,11 @@ public:
                         if (cond)
                             break;
                     }
-                    s1_map[curr_char] -= 1;
-                    remaining -= 1;
-                    if (remaining == 0) {
-                        return true;
-                    }
+                }
+                s1_map[curr_char] -= 1;
+                remaining -= 1;
+                if (remaining == 0) {
+                    return true;
                 }
             }
         }
