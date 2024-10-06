@@ -24,14 +24,8 @@ public:
                     break;
                 }
             }
-            cout << "reached here" << endl;
-            // cannot find cons
-            cout << "sen1_idx: " << sen1_idx << endl; 
             int j = sen1_arr.size() - 1;
             for (int i = sen2_arr.size() - 1; i >= 0; i--) {
-                cout << "sen2: " << sen2_arr[i] << '\n';
-                cout << "sen1: " << sen1_arr[j] << '\n';
-                cout << "j: " << j << '\n';
                 if (sen2_arr[i] == sen1_arr[j]) {
                     if (j == sen1_idx) {
                         return true;
@@ -46,8 +40,6 @@ public:
         } else {
             int sen1_idx = sen1_arr.size() - 1;
             for (int i = sen2_arr.size() - 1; i >= 0; i--) {
-                cout << "sen2_arr: " << sen2_arr[i] << '\n';
-                cout << "sen1_arr: " << sen1_arr[sen1_idx] << '\n';
                 if (sen2_arr[i] == sen1_arr[sen1_idx]) {
                     if (sen1_idx == 0) {
                         return true;
