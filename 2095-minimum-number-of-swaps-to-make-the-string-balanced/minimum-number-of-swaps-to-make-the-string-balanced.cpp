@@ -19,8 +19,6 @@ public:
                     return swap_count;
                 }
             }
-            cout << "left: " << left << '\n';
-            cout << "right: " << right << '\n';
             // swap
             s[left - 1] = '[';
             s[right + 1] = ']';
