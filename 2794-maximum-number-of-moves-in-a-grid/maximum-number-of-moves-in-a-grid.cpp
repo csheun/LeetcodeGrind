@@ -18,17 +18,13 @@ public:
 			}
 		}
 		visited[row][col] = res;
-		cout << "visited[" << row << "][" << col << "] : " << res << '\n';
 		return res;
 
 	}
     int maxMoves(vector<vector<int>>& grid) {
         int res = 0;
-        vector<pair<int,int>> directions = {{-1, 1}, {0, 1}, {1, 1}};
-        vector<vector<int>> visited(grid.size(), vector(grid[0].size(), -1));
+        vector<vector<int>> visited(grid.size(), vector<int>(grid[0].size(), -1));
         for (int i = 0; i < grid.size(); ++i) {
-			cout << "currently: " << i << '\n';
-			cout << "------------------------------------" << '\n';
 			res = max(res, helper(grid, visited, i, 0));
         }
 		return res;
