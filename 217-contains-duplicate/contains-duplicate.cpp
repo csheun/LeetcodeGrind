@@ -1,13 +1,13 @@
+#include <unordered_map>
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
-        std:unordered_map<int, bool> mp;
-        for (int num: nums) {
-            if (mp.find(num) != mp.end()) {
+        unordered_map<int, bool> map;
+        for (int num : nums) {
+            if (map.find(num) != map.end()) {
                 return true;
-            } else {
-                mp[num] = true;
             }
+            map[num] = true;
         }
         return false;
     }
