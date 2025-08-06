@@ -6,7 +6,6 @@ class Solution:
 
         res_lst = []
         for key, value in freq.items():
-            for i in range(value):
-                res_lst.append(key)
+            res_lst.append(key * value)
         return ''.join(res_lst)
 
