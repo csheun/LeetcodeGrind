@@ -1,7 +1,8 @@
 from collections import Counter
 class Solution:
     def frequencySort(self, s: str) -> str:
-        freq = dict(Counter(s))
+        # freq = dict(Counter(s).most_common())
+        freq = Counter(s)
         freq = dict(sorted(freq.items(), key=lambda x: x[1], reverse=True))
 
         res_lst = []
