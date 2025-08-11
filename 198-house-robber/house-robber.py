@@ -11,5 +11,5 @@ class Solution:
             curr = max(minus_2 + nums[i], minus_1)
             minus_2 = minus_1
             minus_1 = curr
-        return max(minus_1, minus_2)
+        return minus_1
         
