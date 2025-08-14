@@ -23,10 +23,10 @@ class Solution:
         for i in range(1, len(nums)):
             if nums[i] > res_arr[-1]:
                 res_arr.append(nums[i])
-            elif nums[i] < res_arr[-1]:
-                # find the smallest number that is bigger than it to replace
-                idx = bisect_left(sub, nums[i])
-                sub[idx] = nums[i]
+            else:
+                # find the smallest number that is bigger or equal than it to replace
+                idx = bisect_left(res_arr, nums[i])
+                res_arr[idx] = nums[i]
         
         return len(res_arr)
             
