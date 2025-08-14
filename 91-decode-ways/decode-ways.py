@@ -24,21 +24,41 @@ class Solution:
         # ie dp[2] = ways to decode messages of length 2 -> msg[0:2]
         # ie dp[n] = ways to msgs of length n thefore len(dp) = n + 1
 
+        # if int(s[0]) == 0:
+        #     return 0
+        
+        # dp = [0] * (len(s) + 1)
+
+        # dp[0] = 1
+        # dp[1] = 1
+        # for i in range(2, len(s) + 1):
+        #     digit_1 = int(s[i - 1])
+        #     digit_2 = int(s[i-2:i])
+
+        #     if (digit_1 != 0):
+        #         dp[i] += dp[i - 1]
+        #     if (digit_2 >= 10 and digit_2 <= 26):
+        #         dp[i] += dp[i - 2]
+            
+        # return dp[len(s)]
+        
+        '''
+        3) Optimise space -> use 2 variables to keep track
+        '''
+
         if int(s[0]) == 0:
             return 0
-        
-        dp = [0] * (len(s) + 1)
 
-        dp[0] = 1
-        dp[1] = 1
+        prev = 1
+        curr = 1
         for i in range(2, len(s) + 1):
             digit_1 = int(s[i - 1])
             digit_2 = int(s[i-2:i])
-
+            temp = 0
             if (digit_1 != 0):
-                dp[i] += dp[i - 1]
+                temp += curr
             if (digit_2 >= 10 and digit_2 <= 26):
-                dp[i] += dp[i - 2]
-            
-        return dp[len(s)]
-        
+                temp += prev
+            prev = curr
+            curr = temp
+        return curr
