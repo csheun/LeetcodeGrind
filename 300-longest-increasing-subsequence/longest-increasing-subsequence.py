@@ -20,6 +20,8 @@ class Solution:
         '''
         res_arr = [nums[0]]
 
+        # here we are keeping optimal tail values (smallest last value of an increasing subsequnce of that length)
+
         for i in range(1, len(nums)):
             if nums[i] > res_arr[-1]:
                 res_arr.append(nums[i])
