@@ -13,6 +13,20 @@ class Solution:
             for j in range(i):
                 if (nums[j] < nums[i]):
                     dp[i] = max(dp[i], dp[j] + 1)
-        
         return max(dp)
+
+        '''
+        Binary search (recommended way)
+        '''
+        res_arr = [nums[0]]
+
+        for i in range(1, len(nums)):
+            if nums[i] > res_arr[-1]:
+                res_arr.append(nums[i])
+            elif nums[i] < res_arr[-1]:
+                # find the smallest number that is bigger than it to replace
+                idx = bisect_left(sub, nums[i])
+                sub[idx] = nums[i]
         
+        return len(res_arr)
+            
