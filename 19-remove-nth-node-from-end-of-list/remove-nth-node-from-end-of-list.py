@@ -19,7 +19,6 @@ class Solution:
         count = 0
 
         while fast:
-            print(fast.val)
             fast = fast.next
             if (count >= n):
                 prev = slow
