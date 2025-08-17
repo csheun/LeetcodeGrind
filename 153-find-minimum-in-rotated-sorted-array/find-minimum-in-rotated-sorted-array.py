@@ -17,7 +17,6 @@ class Solution:
 
         while lo <= hi:
             mid = lo + (hi - lo) // 2
-            print(f"low: {lo}, high: {hi}, mid: {mid}, elem: {nums[mid]}")
             # check left and right
             if checkMin(nums, mid):
                 return nums[mid]
