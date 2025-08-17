@@ -11,10 +11,10 @@ class TimeMap:
 
 
     def get(self, key: str, timestamp: int) -> str:
-        print(f"searching for key: {key} timestamp: {timestamp}")
+        # print(f"searching for key: {key} timestamp: {timestamp}")
         arr = self.key_val_map.get(key)
         if not arr:
-            print("Array not found")
+            # print("Array not found")
             return ""
         # search through arr for the best timestamp
         # # brute force (works but nvr use binary search)
