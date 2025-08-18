@@ -4,6 +4,7 @@ class Solution:
             if (total_sum == target):
                 res.append(arr)
             elif (total_sum < target):
+                # avoided duplicates by 
                 for i in range(idx, len(candidates)):
                     new_sum = total_sum + candidates[i]
                     helper(i, new_sum, arr + [candidates[i]])
