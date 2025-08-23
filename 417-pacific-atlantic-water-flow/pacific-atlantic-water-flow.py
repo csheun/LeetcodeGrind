@@ -23,7 +23,6 @@ class Solution:
             col = i
             reach_pacific.add((row, col))
             queue.append((row, col))
-        print("Queue start: ", queue)
         while queue:
             x, y = queue.pop()
             for direction in directions:
