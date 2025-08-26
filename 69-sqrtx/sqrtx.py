@@ -6,7 +6,7 @@ class Solution:
 
         while lo <= hi:
             mid = lo + (hi - lo) // 2
-            print(f'lo: {lo}, hi: {hi}, mid: {mid}')
+            # print(f'lo: {lo}, hi: {hi}, mid: {mid}')
             squared = mid * mid
             if squared == x:
                 return mid
@@ -16,4 +16,3 @@ class Solution:
                 hi = mid -1
 
         return lo - 1
-            
