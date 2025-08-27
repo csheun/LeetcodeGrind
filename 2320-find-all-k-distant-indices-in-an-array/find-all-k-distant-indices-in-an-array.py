@@ -6,8 +6,8 @@ class Solution:
             if nums[i] == key:
                 for j in range(-k, k + 1):
                     idx = i + j
-                    if 0 <= idx < len(nums):
+                    if 0 <= idx < len(nums) and idx not in res:
                         res.add(idx)
         
-        return sorted(list(res))
+        return list(res)
         
