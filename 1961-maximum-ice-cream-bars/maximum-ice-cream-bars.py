@@ -1,7 +1,7 @@
 class Solution:
     def maxIceCream(self, costs: list[int], coins: int) -> int:
         # counting sort
-        count_freq = [0] * (10 ** 5)
+        count_freq = [0] * max(costs)
         for cost in costs:
             count_freq[cost - 1] += 1
         sorted_costs = []
