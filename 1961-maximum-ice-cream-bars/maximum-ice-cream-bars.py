@@ -9,7 +9,6 @@ class Solution:
             if count_freq[i] != 0:
                 tmp = [i + 1] * count_freq[i]
                 sorted_costs.extend(tmp)
-        print(sorted_costs)
         # greedy: take all min
         res = 0
         for cost in sorted_costs:
