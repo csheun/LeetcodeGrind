@@ -28,8 +28,6 @@ class Solution:
                     if freq['1'] == k:
                         beautiful_substrings.append(s[l:i + 1])
 
-        print(beautiful_substrings)
-
         if beautiful_substrings:
             beautiful_substrings.sort(key=lambda x: int(x, 2))
             return beautiful_substrings[0]
